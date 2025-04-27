@@ -2,21 +2,39 @@
 
 .team-modern {
     background: #000;
-    padding: 100px 0 80px 0;
+    padding: 60px 0 80px 0; /* Reduced top padding to account for navbar */
+    margin-top: 80px; /* Added margin to account for fixed navbar */
 }
 
 .team-modern h2,
 .team-modern .team-intro {
     color: #fff;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.team-modern h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.team-modern .team-intro {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 40px;
 }
 
 .team-row {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    gap: 40px;
-    margin-top: 60px;
-    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    min-height: 700px; /* Reduced from 800px to fit better */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .team-member-modern {
@@ -27,49 +45,106 @@
     box-shadow: none;
     border-radius: 0;
     padding: 0;
+    max-width: 800px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    width: 100%;
+}
+
+.team-member-modern.active {
+    opacity: 1;
+}
+
+.team-member-modern .image-container {
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 40px;
 }
 
 .team-member-modern img {
-    width: 180px;
-    height: 240px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    object-position: top;
-    border-radius: 0 0 80px 80px/0 0 100px 100px;
+    object-position: center;
+    border-radius: 0;
     background: #222;
-    margin-bottom: 24px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 0 0 2px #222;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
 }
 
 .team-member-modern h3 {
-    font-size: 20px;
+    font-size: 32px;
     color: #fff;
-    margin: 0 0 4px 0;
+    margin: 0 0 12px 0;
     font-weight: 600;
     text-align: center;
 }
 
 .team-member-modern p {
-    font-size: 16px;
+    font-size: 24px;
     color: #aaa;
     margin: 0;
     text-align: center;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
     .team-row {
-        gap: 24px;
+        min-height: 600px;
     }
-    .team-member-modern img {
-        width: 140px;
-        height: 180px;
+    .team-member-modern {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 900px) {
+    .team-modern {
+        padding: 40px 0 60px 0;
+        margin-top: 60px;
+    }
+    .team-modern h2 {
+        font-size: 36px;
+    }
+    .team-row {
+        min-height: 500px;
+    }
+    .team-member-modern {
+        max-width: 600px;
+    }
+    .team-member-modern h3 {
+        font-size: 28px;
+    }
+    .team-member-modern p {
+        font-size: 20px;
     }
 }
 
 @media (max-width: 600px) {
+    .team-modern {
+        padding: 30px 0 40px 0;
+        margin-top: 50px;
+    }
+    .team-modern h2 {
+        font-size: 28px;
+    }
+    .team-modern .team-intro {
+        font-size: 16px;
+    }
     .team-row {
-        flex-direction: column;
-        align-items: center;
-        gap: 32px;
+        min-height: 400px;
+    }
+    .team-member-modern {
+        max-width: 100%;
+    }
+    .team-member-modern h3 {
+        font-size: 24px;
+    }
+    .team-member-modern p {
+        font-size: 18px;
     }
 }
 

@@ -26,6 +26,7 @@
             <nav class="mobile-nav">
                 <a href="index.html">Home</a>
                 <a href="work.html">Work</a>
+                <a href="digital.html">Digital Products</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </nav>
@@ -37,18 +38,24 @@
             <h2>Meet Our Team</h2>
             <p class="team-intro">Our diverse team brings together expertise in design, development, and strategy to create exceptional digital experiences.</p>
             <div class="team-row">
-                <div class="team-member-modern">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop&q=80" alt="Team Member">
+                <div class="team-member-modern active">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80" alt="Team Member">
+                    </div>
                     <h3>John Doe</h3>
                     <p>Creative Director</p>
                 </div>
                 <div class="team-member-modern">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop&q=80" alt="Team Member">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80" alt="Team Member">
+                    </div>
                     <h3>Jane Smith</h3>
                     <p>Lead Designer</p>
                 </div>
                 <div class="team-member-modern">
-                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=500&auto=format&fit=crop&q=80" alt="Team Member">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=800&auto=format&fit=crop&q=80" alt="Team Member">
+                    </div>
                     <h3>Mike Johnson</h3>
                     <p>Senior Developer</p>
                 </div>
@@ -152,5 +159,25 @@
     </footer>
 
     <script src="../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamMembers = document.querySelectorAll('.team-member-modern');
+            let currentIndex = 0;
+            
+            function changeMember() {
+                // Remove active class from current member
+                teamMembers[currentIndex].classList.remove('active');
+                
+                // Move to next member
+                currentIndex = (currentIndex + 1) % teamMembers.length;
+                
+                // Add active class to new current member
+                teamMembers[currentIndex].classList.add('active');
+            }
+            
+            // Change member every 3 seconds
+            setInterval(changeMember, 3000);
+        });
+    </script>
 </body>
 </html> 

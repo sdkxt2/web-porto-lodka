@@ -108,59 +108,67 @@ function initHamburgerMenu() {
     const menuLines = document.querySelectorAll('.menu-line');
     const menuLinks = document.querySelectorAll('.mobile-nav a');
 
-    if (hamburgerMenu && menuOverlay) {
-        hamburgerMenu.addEventListener('click', () => {
-            hamburgerMenu.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-            document.body.style.overflow = menuOverlay.classList.contains('active') ? 'hidden' : '';
-            
-            // Animate menu lines
-            menuLines.forEach((line, index) => {
-                if (hamburgerMenu.classList.contains('active')) {
-                    if (index === 0) {
-                        line.style.transform = 'rotate(45deg) translate(5px, 5px)';
-                    } else if (index === 1) {
-                        line.style.opacity = '0';
-                    } else if (index === 2) {
-                        line.style.transform = 'rotate(-45deg) translate(5px, -5px)';
-                    }
-                } else {
-                    line.style.transform = '';
-                    line.style.opacity = '';
+    if (!hamburgerMenu || !menuOverlay) return;
+
+    // Toggle menu function
+    function toggleMenu() {
+        hamburgerMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.style.overflow = menuOverlay.classList.contains('active') ? 'hidden' : '';
+        
+        // Animate menu lines
+        menuLines.forEach((line, index) => {
+            if (hamburgerMenu.classList.contains('active')) {
+                if (index === 0) {
+                    line.style.transform = 'rotate(45deg) translate(5px, 5px)';
+                } else if (index === 1) {
+                    line.style.opacity = '0';
+                } else if (index === 2) {
+                    line.style.transform = 'rotate(-45deg) translate(5px, -5px)';
                 }
-            });
-        });
-
-        // Close menu when clicking on a link
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburgerMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                
-                // Reset menu lines
-                menuLines.forEach(line => {
-                    line.style.transform = '';
-                    line.style.opacity = '';
-                });
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburgerMenu.contains(e.target) && !menuOverlay.contains(e.target)) {
-                hamburgerMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                
-                // Reset menu lines
-                menuLines.forEach(line => {
-                    line.style.transform = '';
-                    line.style.opacity = '';
-                });
+            } else {
+                line.style.transform = '';
+                line.style.opacity = '';
             }
         });
     }
+
+    // Add click event to hamburger menu
+    hamburgerMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    // Close menu when clicking on a link
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburgerMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Reset menu lines
+            menuLines.forEach(line => {
+                line.style.transform = '';
+                line.style.opacity = '';
+            });
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (menuOverlay.classList.contains('active') && 
+            !hamburgerMenu.contains(e.target) && 
+            !menuOverlay.contains(e.target)) {
+            toggleMenu();
+        }
+    });
+
+    // Close menu when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
 }
 
 // Team member navigation
