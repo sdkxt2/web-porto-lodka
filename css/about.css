@@ -1,0 +1,142 @@
+/* About Page Specific Styles */
+
+.team-modern {
+    background: #000;
+    padding: 100px 0 80px 0;
+}
+
+.team-modern h2,
+.team-modern .team-intro {
+    color: #fff;
+}
+
+.team-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 40px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.team-member-modern {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+}
+
+.team-member-modern img {
+    width: 180px;
+    height: 240px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 0 0 80px 80px/0 0 100px 100px;
+    background: #222;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 0 0 2px #222;
+}
+
+.team-member-modern h3 {
+    font-size: 20px;
+    color: #fff;
+    margin: 0 0 4px 0;
+    font-weight: 600;
+    text-align: center;
+}
+
+.team-member-modern p {
+    font-size: 16px;
+    color: #aaa;
+    margin: 0;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .team-row {
+        gap: 24px;
+    }
+    .team-member-modern img {
+        width: 140px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 600px) {
+    .team-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+    }
+}
+
+.process-steps {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 32px;
+    margin-top: 60px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 16px;
+}
+
+.step {
+    background-color: #111;
+    padding: 32px 24px;
+    border-radius: 16px;
+    flex: 1 1 0;
+    min-width: 180px;
+    max-width: 260px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.step h3 {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.step p {
+    font-size: 15px;
+    color: #aaa;
+    margin: 0;
+}
+
+.step:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+@media (max-width: 900px) {
+    .process-steps {
+        gap: 16px;
+    }
+    .step {
+        padding: 24px 10px;
+        min-width: 120px;
+        max-width: 180px;
+    }
+}
+
+@media (max-width: 600px) {
+    .process-steps {
+        flex-direction: column;
+        gap: 24px;
+        align-items: stretch;
+    }
+    .step {
+        max-width: 100%;
+    }
+} 
